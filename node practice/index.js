@@ -1,18 +1,9 @@
-const {EventEmitter} = require('events');
-const {readFile, readFileSync} = require('fs');
+const express = require('express');
+const {readFile} = require('fs').promises;
+const app = express();
 
-const eventEmitter = new EventEmitter();
-const delayed_txt = readFileSync('hello2.txt', 'utf8');
-const txt = readFile('hello.txt', 'utf8', (err, txt) => {
-    console.log(txt)
+app.get('/', async (request, response) => {
+    response.send(await readFile('./home.html', 'utf8'));
 });
 
-eventEmitter.on('lunch', () => {
-    console.log('yum!');
-})
-
-eventEmitter.emit('lunch');
-eventEmitter.emit('lunch');
-
-console.log(delayed_txt);
-console.log(txt);
+app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'));
