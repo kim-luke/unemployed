@@ -1,0 +1,1 @@
+All of the work that I do throughout my unemployment will be stored here as a reference for both myself and any others who wish to look through it.
